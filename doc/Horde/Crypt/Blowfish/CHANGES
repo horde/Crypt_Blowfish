@@ -1,0 +1,54 @@
+----------
+v1.1.3-git
+----------
+
+
+------
+v1.1.2
+------
+
+[jan] Support PHP 7.1 with deprecated mcrypt extension.
+
+
+------
+v1.1.1
+------
+
+[jan] Mark PHP 7 as supported.
+
+
+------
+v1.1.0
+------
+
+[mms] Add Horde_Crypt_Blowfish_Pbkdf2.
+
+
+------
+v1.0.3
+------
+
+[jan] Improve PSR-2 compatibility.
+[jan] Add Composer definition.
+
+
+------
+v1.0.2
+------
+
+[mms] Fix Openssl driver for PHP 5.3.0-5.3.2 (Bug #11797).
+
+
+------
+v1.0.1
+------
+
+[mms] Mask harmless warning messages when using openssl_encrypt() on
+      out-of-date PHP versions.
+
+
+------
+v1.0.0
+------
+
+[mms] Initial release of package.

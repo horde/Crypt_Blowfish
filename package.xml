@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-09-01</date>
+ <date>2017-10-30</date>
  <version>
   <release>1.1.3</release>
   <api>1.1.0</api>
@@ -29,6 +29,7 @@
     <dir name="Horde">
      <dir name="Crypt">
       <dir name="Blowfish">
+       <file name="CHANGES" role="doc" />
        <file name="COPYING" role="doc" />
        <file name="ORIGINAL_LICENSE" role="doc" />
       </dir> <!-- /doc/Horde/Crypt/Blowfish -->
@@ -118,6 +119,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Crypt/Blowfish/CHANGES" />
    <install as="COPYING" name="doc/Horde/Crypt/Blowfish/COPYING" />
    <install as="ORIGINAL_LICENSE" name="doc/Horde/Crypt/Blowfish/ORIGINAL_LICENSE" />
    <install as="Horde/Crypt/Blowfish.php" name="lib/Horde/Crypt/Blowfish.php" />
@@ -242,7 +244,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-09-01</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
