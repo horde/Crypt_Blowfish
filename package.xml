@@ -69,7 +69,6 @@
        <file name="CbcTest.php" role="test" />
        <file name="EcbTest.php" role="test" />
        <file name="Pbkdf2Test.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Crypt/Blowfish -->
      </dir> <!-- /test/Horde/Crypt -->
     </dir> <!-- /test/Horde -->
@@ -137,7 +136,6 @@
    <install as="Horde/Crypt/Blowfish/CbcTest.php" name="test/Horde/Crypt/Blowfish/CbcTest.php" />
    <install as="Horde/Crypt/Blowfish/EcbTest.php" name="test/Horde/Crypt/Blowfish/EcbTest.php" />
    <install as="Horde/Crypt/Blowfish/Pbkdf2Test.php" name="test/Horde/Crypt/Blowfish/Pbkdf2Test.php" />
-   <install as="Horde/Crypt/Blowfish/phpunit.xml" name="test/Horde/Crypt/Blowfish/phpunit.xml" />
    <install as="Horde/Crypt/Blowfish/fixtures/vectors.txt" name="test/Horde/Crypt/Blowfish/fixtures/vectors.txt" />
    <install as="Horde/Crypt/Blowfish/fixtures/vectors_cbc.txt" name="test/Horde/Crypt/Blowfish/fixtures/vectors_cbc.txt" />
   </filelist>
