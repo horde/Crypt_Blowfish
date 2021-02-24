@@ -21,12 +21,12 @@
     ],
     "require": {
         "horde/horde-installer-plugin": "*",
-        "php": "^5.3 || ^7",
-        "horde/exception": "^2",
-        "horde/support": "^2"
+        "php": "^7",
+        "horde/exception": "^3",
+        "horde/support": "^3"
     },
     "suggest": {
-        "horde/test": "^2.1",
+        "horde/test": "^3",
         "ext-mcrypt": "*",
         "ext-openssl": "*"
     },
