@@ -4,13 +4,18 @@
  * @package    Crypt_Blowfish
  * @subpackage UnitTests
  */
+namespace Horde\Crypt\Blowfish;
+use Horde_Test_Case;
+use \Horde_Crypt_Blowfish;
+use \Horde_Crypt_Blowfish_Mcrypt;
+use \Horde_Crypt_Blowfish_Openssl;
 
 /**
  * @category   Horde
  * @package    Crypt_Blowfish
  * @subpackage UnitTests
  */
-class Horde_Crypt_Blowfish_CbcTest extends Horde_Test_Case
+class CbcTest extends Horde_Test_Case
 {
     /**
      * @dataProvider vectorProvider
