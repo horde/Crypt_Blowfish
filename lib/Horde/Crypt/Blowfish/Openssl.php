@@ -26,7 +26,8 @@ class Horde_Crypt_Blowfish_Openssl extends Horde_Crypt_Blowfish_Base
      */
     public static function supported()
     {
-        return extension_loaded('openssl');
+        // bf-* ciphers might not be supported on all systems
+        return extension_loaded('openssl') && array_search('bf-cbc', openssl_get_cipher_methods());
     }
 
     /**
