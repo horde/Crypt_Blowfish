@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>no</active>
  </lead>
- <date>2019-11-03</date>
+ <date>2022-06-25</date>
  <version>
   <release>1.1.4</release>
   <api>1.1.0</api>
@@ -21,7 +21,8 @@
  </stability>
  <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
  <notes>
-* 
+* [mjr] Fix detecting if blowfish ciphers are supported when using openssl 3.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -274,7 +275,8 @@
    <date>2019-11-03</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
-* 
+* [mjr] Fix detecting if blowfish ciphers are supported when using openssl 3.
+* |+
    </notes>
   </release>
  </changelog>
