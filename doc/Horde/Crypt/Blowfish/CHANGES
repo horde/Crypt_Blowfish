@@ -2,7 +2,9 @@
 v2.0.0alpha3
 ------------
 
-
+[rla] Upgraded PHPUnit tests to not appear risky.
+[rla] Incorporated upstream PHP 8.1 fixes.
+|+
 
 
 ------------
@@ -15,9 +17,22 @@ v2.0.0alpha2
 v2.0.0alpha1
 ------------
 
+[rla] composerized release
+
+
+------
+v1.1.4
+------
+
+[mjr] Fix detecting if blowfish ciphers are supported when using openssl 3.
+
+
+------
+v1.1.3
+------
+
 [mjr] PHP 7.4 compatibility fixes (Remi Collet <remi@famillecollet.com>, PR
       #1).
-
 
 
 ------

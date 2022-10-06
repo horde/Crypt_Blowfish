@@ -24,7 +24,7 @@
         "horde/support": "^3 || dev-FRAMEWORK_6_0"
     },
     "require-dev": {
-        "horde/test": "^3  || dev-FRAMEWORK_6_0"
+        "horde/test": "^3 || dev-FRAMEWORK_6_0"
     },
     "suggest": {
         "ext-mcrypt": "*",
@@ -44,6 +44,5 @@
         "allow-plugins": {
             "horde/horde-installer-plugin": true
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

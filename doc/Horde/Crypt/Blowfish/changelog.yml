@@ -4,11 +4,14 @@
   state:
     release: alpha
     api: alpha
-  date: 2021-03-13
+  date: 2022-10-06
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
+  notes: |
+    [rla] Upgraded PHPUnit tests to not appear risky.
+    [rla] Incorporated upstream PHP 8.1 fixes.
+    |+
 2.0.0alpha2:
   api: 2.0.0alpha1
   state:
@@ -50,7 +53,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
+  notes: |
     [mjr] PHP 7.4 compatibility fixes (Remi Collet <remi@famillecollet.com>, PR #1).
 1.1.2:
   api: 1.1.0
@@ -63,7 +66,8 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     [jan] Support PHP 7.1 with deprecated mcrypt extension.
-1.1.1:  api: 1.1.0
+1.1.1:
+  api: 1.1.0
   state:
     release: stable
     api: stable
