@@ -11,7 +11,7 @@
  * @package    Crypt_Blowfish
  * @subpackage UnitTests
  */
-namespace Horde\Crypt\Blowfish;
+namespace Horde\Crypt\Blowfish\Test;
 use Horde_Test_Case;
 use \Horde_Crypt_Blowfish_Pbkdf2;
 

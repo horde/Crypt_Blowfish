@@ -28,9 +28,10 @@ dependencies:
     composer:
       horde/exception: ^3
       horde/support: ^3
-  optional:
+  dev:
     composer:
       horde/test: ^3
+  optional:
     ext:
       mcrypt: '*'
       openssl: '*'

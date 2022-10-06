@@ -4,7 +4,7 @@
  * @package    Crypt_Blowfish
  * @subpackage UnitTests
  */
-namespace Horde\Crypt\Blowfish;
+namespace Horde\Crypt\Blowfish\Test;
 use Horde_Test_Case;
 use \Horde_Crypt_Blowfish;
 use \Horde_Crypt_Blowfish_Mcrypt;
@@ -26,7 +26,19 @@ class CbcTest extends Horde_Test_Case
             $this->markTestSkipped();
         }
 
-        $this->_doTest($vector, 0);
+        $ob = $this->setupTest($vector, 0);
+        $encrypt = $ob->encrypt($vector['plain']);
+
+        // Let's verify some sort of obfuscation occurred.
+        $this->assertNotEquals(
+            $vector['plain'],
+            $encrypt
+        );
+
+        $this->assertEquals(
+            $vector['plain'],
+            $ob->decrypt($encrypt)
+        );
     }
 
     /**
@@ -38,7 +50,19 @@ class CbcTest extends Horde_Test_Case
             $this->markTestSkipped();
         }
 
-        $this->_doTest($vector, Horde_Crypt_Blowfish::IGNORE_OPENSSL);
+        $ob = $this->setupTest($vector, Horde_Crypt_Blowfish::IGNORE_OPENSSL);
+        $encrypt = $ob->encrypt($vector['plain']);
+
+        // Let's verify some sort of obfuscation occurred.
+        $this->assertNotEquals(
+            $vector['plain'],
+            $encrypt
+        );
+
+        $this->assertEquals(
+            $vector['plain'],
+            $ob->decrypt($encrypt)
+        );
     }
 
     /**
@@ -46,10 +70,22 @@ class CbcTest extends Horde_Test_Case
      */
     public function testPhpDriver($vector)
     {
-        $this->_doTest(
+        $ob = $this->setupTest(
             $vector,
             Horde_Crypt_Blowfish::IGNORE_OPENSSL |
             Horde_Crypt_Blowfish::IGNORE_MCRYPT
+        );
+        $encrypt = $ob->encrypt($vector['plain']);
+
+        // Let's verify some sort of obfuscation occurred.
+        $this->assertNotEquals(
+            $vector['plain'],
+            $encrypt
+        );
+
+        $this->assertEquals(
+            $vector['plain'],
+            $ob->decrypt($encrypt)
         );
     }
 
@@ -72,26 +108,13 @@ class CbcTest extends Horde_Test_Case
         return $vectors;
     }
 
-    protected function _doTest($v, $ignore)
+    protected function setupTest($v, $ignore)
     {
-        $ob = new Horde_Crypt_Blowfish($v['key'], array(
+        return new Horde_Crypt_Blowfish($v['key'], array(
             'cipher' => 'cbc',
             'ignore' => $ignore,
             'iv' => $v['iv']
         ));
-
-        $encrypt = $ob->encrypt($v['plain']);
-
-        // Let's verify some sort of obfuscation occurred.
-        $this->assertNotEquals(
-            $v['plain'],
-            $encrypt
-        );
-
-        $this->assertEquals(
-            $v['plain'],
-            $ob->decrypt($encrypt)
-        );
     }
 
 }
