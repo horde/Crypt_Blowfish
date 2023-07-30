@@ -27,18 +27,6 @@ class Horde_Crypt_Blowfish_EcbTest extends Horde_Test_Case
     /**
      * @dataProvider vectorProvider
      */
-    public function testMcryptDriver($vector)
-    {
-        if (!Horde_Crypt_Blowfish_Mcrypt::supported()) {
-            $this->markTestSkipped();
-        }
-
-        $this->_doTest($vector, Horde_Crypt_Blowfish::IGNORE_OPENSSL);
-    }
-
-    /**
-     * @dataProvider vectorProvider
-     */
     public function testPhpDriver($vector)
     {
         $this->_doTest(
