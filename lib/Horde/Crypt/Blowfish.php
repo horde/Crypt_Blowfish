@@ -29,6 +29,7 @@
  * @property string $key  The encryption key in use.
  * @property mixed $iv  The initialization vector (false if using 'ecb').
  */
+#[\AllowDynamicProperties]
 class Horde_Crypt_Blowfish
 {
     // Constants for 'ignore' parameter of constructor.
