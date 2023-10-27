@@ -14,24 +14,18 @@
     "version": "1.1.5",
     "time": "2022-06-25",
     "repositories": [
-        {
-            "type": "pear",
-            "url": "https://pear.horde.org"
-        }
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Exception": "^2",
-        "pear-pear.horde.org/Horde_Support": "^2"
+        "horde/exception": "^2",
+        "horde/support": "^2"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Test": "^2.1",
+        "horde/test": "^2.1",
         "ext-mcrypt": "*",
         "ext-openssl": "*"
     },
     "replace": {
-        "pear-pear.horde.org/Horde_Crypt_Blowfish": "1.*",
-        "pear-horde/Horde_Crypt_Blowfish": "1.*"
     },
     "autoload": {
         "psr-0": {
