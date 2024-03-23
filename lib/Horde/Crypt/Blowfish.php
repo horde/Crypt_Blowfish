@@ -52,6 +52,13 @@ class Horde_Crypt_Blowfish
     protected $_crypt;
 
     /**
+     * iv.
+     *
+     * @var bool
+     */
+    protected $iv;
+
+    /**
      * Constructor.
      *
      * @param string $key  Encryption key.
