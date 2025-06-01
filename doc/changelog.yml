@@ -1,16 +1,17 @@
 ---
-2.0.0alpha4:
-  api: 2.0.0alpha1
+2.0.0-alpha4:
+  api: 2.0.0-alpha1
   state:
     release: alpha
     api: alpha
-  date: 2022-10-06
+  date: 2025-06-01
   license:
-    identifier: LGPL-2.1
+    identifier: LGPL-2.1-only
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-    
-2.0.0alpha3:
+  notes: |
+    style: apply php-cs-fixer
+    fix: this fixes a PHP ERROR: Creation of dynamic property iv is deprecated issue
+2.0.0-alpha3:
   api: 2.0.0alpha1
   state:
     release: alpha
@@ -20,10 +21,11 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
+    Original version string was 2.0.0alpha3
     [rla] Upgraded PHPUnit tests to not appear risky.
     [rla] Incorporated upstream PHP 8.1 fixes.
     |+
-2.0.0alpha2:
+2.0.0-alpha2:
   api: 2.0.0alpha1
   state:
     release: alpha
@@ -32,8 +34,10 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha1:
+  notes: |-
+    Original version string was 2.0.0alpha2
+    |+
+2.0.0-alpha1:
   api: 2.0.0alpha1
   state:
     release: stable
@@ -43,6 +47,7 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
+    Original version string was 2.0.0alpha1
     [rla] composerized release
 1.1.4:
   api: 1.1.0
