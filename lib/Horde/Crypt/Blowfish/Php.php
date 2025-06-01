@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
  * Copyright 2008 Philippe Jausions <jausions@php.net>
@@ -61,13 +62,13 @@ class Horde_Crypt_Blowfish_Php extends Horde_Crypt_Blowfish_Base
         if (!isset($this->_ob) ||
             ($this->_ob->md5 != hash('md5', $this->key))) {
             switch ($this->cipher) {
-            case 'cbc':
-                $this->_ob = new Horde_Crypt_Blowfish_Php_Cbc($this->key);
-                break;
+                case 'cbc':
+                    $this->_ob = new Horde_Crypt_Blowfish_Php_Cbc($this->key);
+                    break;
 
-            case 'ecb':
-                $this->_ob = new Horde_Crypt_Blowfish_Php_Ecb($this->key);
-                break;
+                case 'ecb':
+                    $this->_ob = new Horde_Crypt_Blowfish_Php_Ecb($this->key);
+                    break;
             }
         }
     }

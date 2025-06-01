@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
  * Copyright 2008 Philippe Jausions <jausions@php.net>

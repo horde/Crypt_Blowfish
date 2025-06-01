@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
  * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
@@ -32,17 +33,17 @@
 class Horde_Crypt_Blowfish
 {
     // Constants for 'ignore' parameter of constructor.
-    const IGNORE_OPENSSL = 1;
-    const IGNORE_MCRYPT = 2;
+    public const IGNORE_OPENSSL = 1;
+    public const IGNORE_MCRYPT = 2;
 
     // Block size for Blowfish
-    const BLOCKSIZE = 8;
+    public const BLOCKSIZE = 8;
 
     // Maximum key size for Blowfish
-    const MAXKEYSIZE = 56;
+    public const MAXKEYSIZE = 56;
 
     // IV Length for CBC
-    const IV_LENGTH = 8;
+    public const IV_LENGTH = 8;
 
     /**
      * Blowfish crypt driver.
@@ -93,10 +94,10 @@ class Horde_Crypt_Blowfish
     public function __get($name)
     {
         switch ($name) {
-        case 'cipher':
-        case 'key':
-        case 'iv':
-            return $this->_crypt->$name;
+            case 'cipher':
+            case 'key':
+            case 'iv':
+                return $this->_crypt->$name;
         }
     }
 
@@ -162,23 +163,23 @@ class Horde_Crypt_Blowfish
         $this->_crypt->key = $key;
 
         switch ($this->_crypt->cipher) {
-        case 'cbc':
-            if (is_null($iv)) {
-                if (is_null($this->iv)) {
-                    $this->_crypt->setIv();
+            case 'cbc':
+                if (is_null($iv)) {
+                    if (is_null($this->iv)) {
+                        $this->_crypt->setIv();
+                    }
+                } else {
+                    $iv = substr($iv, 0, self::IV_LENGTH);
+                    if (($len = strlen($iv)) < self::IV_LENGTH) {
+                        $iv .= str_repeat(chr(0), self::IV_LENGTH - $len);
+                    }
+                    $this->_crypt->setIv($iv);
                 }
-            } else {
-                $iv = substr($iv, 0, self::IV_LENGTH);
-                if (($len = strlen($iv)) < self::IV_LENGTH) {
-                    $iv .= str_repeat(chr(0), self::IV_LENGTH - $len);
-                }
-                $this->_crypt->setIv($iv);
-            }
-            break;
+                break;
 
-        case 'ecb':
-            $this->iv = false;
-            break;
+            case 'ecb':
+                $this->iv = false;
+                break;
         }
     }
 

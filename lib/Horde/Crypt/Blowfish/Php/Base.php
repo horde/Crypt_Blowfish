@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
  * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
@@ -337,31 +338,31 @@ abstract class Horde_Crypt_Blowfish_Php_Base
         for ($i = 0; $i <= 16; $i += 2) {
             $this->_encipher($datal, $datar);
             $this->_P[$i] = $datal;
-            $this->_P[$i+1] = $datar;
+            $this->_P[$i + 1] = $datar;
         }
 
         for ($i = 0; $i < 256; $i += 2) {
             $this->_encipher($datal, $datar);
             $this->_S[0][$i] = $datal;
-            $this->_S[0][$i+1] = $datar;
+            $this->_S[0][$i + 1] = $datar;
         }
 
         for ($i = 0; $i < 256; $i += 2) {
             $this->_encipher($datal, $datar);
             $this->_S[1][$i] = $datal;
-            $this->_S[1][$i+1] = $datar;
+            $this->_S[1][$i + 1] = $datar;
         }
 
         for ($i = 0; $i < 256; $i += 2) {
             $this->_encipher($datal, $datar);
             $this->_S[2][$i] = $datal;
-            $this->_S[2][$i+1] = $datar;
+            $this->_S[2][$i + 1] = $datar;
         }
 
         for ($i = 0; $i < 256; $i += 2) {
             $this->_encipher($datal, $datar);
             $this->_S[3][$i] = $datal;
-            $this->_S[3][$i+1] = $datar;
+            $this->_S[3][$i + 1] = $datar;
         }
 
         $this->md5 = hash('md5', $key);
