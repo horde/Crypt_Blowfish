@@ -1,39 +1,35 @@
 <?php
 
-/**
- * @category   Horde
- * @package    Crypt_Blowfish
- * @subpackage UnitTests
- */
+declare(strict_types=1);
 
 namespace Horde\Crypt\Blowfish\Test;
 
-use Horde_Test_Case;
 use Horde_Crypt_Blowfish;
 use Horde_Crypt_Blowfish_Mcrypt;
 use Horde_Crypt_Blowfish_Openssl;
+use Horde_Crypt_Blowfish_Php;
+use Horde_Crypt_Blowfish_Php_Cbc;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
-/**
- * @category   Horde
- * @package    Crypt_Blowfish
- * @subpackage UnitTests
- * @coversNothing
- */
-class CbcTest extends Horde_Test_Case
+#[CoversClass(Horde_Crypt_Blowfish::class)]
+#[CoversClass(Horde_Crypt_Blowfish_Openssl::class)]
+#[CoversClass(Horde_Crypt_Blowfish_Mcrypt::class)]
+#[CoversClass(Horde_Crypt_Blowfish_Php::class)]
+#[CoversClass(Horde_Crypt_Blowfish_Php_Cbc::class)]
+class CbcTest extends TestCase
 {
-    /**
-     * @dataProvider vectorProvider
-     */
-    public function testOpensslDriver($vector)
+    #[DataProvider('vectorProvider')]
+    public function testOpensslDriver(array $vector): void
     {
         if (!Horde_Crypt_Blowfish_Openssl::supported()) {
-            $this->markTestSkipped();
+            $this->markTestSkipped('OpenSSL not available');
         }
 
         $ob = $this->setupTest($vector, 0);
         $encrypt = $ob->encrypt($vector['plain']);
 
-        // Let's verify some sort of obfuscation occurred.
         $this->assertNotEquals(
             $vector['plain'],
             $encrypt
@@ -45,19 +41,16 @@ class CbcTest extends Horde_Test_Case
         );
     }
 
-    /**
-     * @dataProvider vectorProvider
-     */
-    public function testMcryptDriver($vector)
+    #[DataProvider('vectorProvider')]
+    public function testMcryptDriver(array $vector): void
     {
         if (!Horde_Crypt_Blowfish_Mcrypt::supported()) {
-            $this->markTestSkipped();
+            $this->markTestSkipped('Mcrypt not available');
         }
 
         $ob = $this->setupTest($vector, Horde_Crypt_Blowfish::IGNORE_OPENSSL);
         $encrypt = $ob->encrypt($vector['plain']);
 
-        // Let's verify some sort of obfuscation occurred.
         $this->assertNotEquals(
             $vector['plain'],
             $encrypt
@@ -69,10 +62,8 @@ class CbcTest extends Horde_Test_Case
         );
     }
 
-    /**
-     * @dataProvider vectorProvider
-     */
-    public function testPhpDriver($vector)
+    #[DataProvider('vectorProvider')]
+    public function testPhpDriver(array $vector): void
     {
         $ob = $this->setupTest(
             $vector,
@@ -81,7 +72,6 @@ class CbcTest extends Horde_Test_Case
         );
         $encrypt = $ob->encrypt($vector['plain']);
 
-        // Let's verify some sort of obfuscation occurred.
         $this->assertNotEquals(
             $vector['plain'],
             $encrypt
@@ -93,9 +83,9 @@ class CbcTest extends Horde_Test_Case
         );
     }
 
-    public function vectorProvider()
+    public static function vectorProvider(): array
     {
-        $data = file(dirname(__FILE__) . '/fixtures/vectors_cbc.txt');
+        $data = file(__DIR__ . '/fixtures/vectors_cbc.txt');
         $vectors = [];
 
         foreach ($data as $val) {
@@ -112,7 +102,7 @@ class CbcTest extends Horde_Test_Case
         return $vectors;
     }
 
-    protected function setupTest($v, $ignore)
+    protected function setupTest(array $v, int $ignore): Horde_Crypt_Blowfish
     {
         return new Horde_Crypt_Blowfish($v['key'], [
             'cipher' => 'cbc',
@@ -120,5 +110,4 @@ class CbcTest extends Horde_Test_Case
             'iv' => $v['iv'],
         ]);
     }
-
 }

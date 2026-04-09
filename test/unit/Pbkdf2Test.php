@@ -1,44 +1,26 @@
 <?php
 
-/**
- * Copyright 2015-2026 Horde LLC (http://www.horde.org/)
- *
- * See the enclosed file LICENSE for license information (LGPL). If you
- * did not receive this file, see http://www.horde.org/licenses/lgpl21.
- *
- * @category   Horde
- * @copyright  2015-2016 Horde LLC
- * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Crypt_Blowfish
- * @subpackage UnitTests
- */
+declare(strict_types=1);
 
 namespace Horde\Crypt\Blowfish\Test;
 
-use Horde_Test_Case;
 use Horde_Crypt_Blowfish_Pbkdf2;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
-/**
- * Tests for PBKDF2.
- *
- * @author     Michael Slusarz <slusarz@horde.org>
- * @category   Horde
- * @copyright  2015-2016 Horde LLC
- * @ignore
- * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Crypt_Blowfish
- * @subpackage UnitTests
- * @coversNothing
- */
-class Pbkdf2Test extends Horde_Test_Case
+#[CoversClass(Horde_Crypt_Blowfish_Pbkdf2::class)]
+class Pbkdf2Test extends TestCase
 {
-    /**
-     * Test vectors.
-     *
-     * @dataProvider vectorsProvider
-     */
-    public function testVectors($expected, $algo, $pass, $salt, $iter, $klen)
-    {
+    #[DataProvider('vectorsProvider')]
+    public function testVectors(
+        string $expected,
+        string $algo,
+        string $pass,
+        string $salt,
+        int $iter,
+        int $klen,
+    ): void {
         $pbkdf2 = new Horde_Crypt_Blowfish_Pbkdf2($pass, $klen, [
             'algo' => $algo,
             'i_count' => $iter,
@@ -47,7 +29,7 @@ class Pbkdf2Test extends Horde_Test_Case
 
         $this->assertEquals(
             $expected,
-            bin2hex($pbkdf2)
+            bin2hex((string) $pbkdf2)
         );
 
         $this->assertEquals(
@@ -66,22 +48,16 @@ class Pbkdf2Test extends Horde_Test_Case
         );
     }
 
-    public function vectorsProvider()
+    public static function vectorsProvider(): array
     {
         return [
             /* Begin: RFC 6070 Vectors */
             [
-                // Expected
                 '0c60c80f961f0e71f3a9b524af6012062fe037a6',
-                // Hash
                 'SHA1',
-                // Password
                 'password',
-                // Salt
                 'salt',
-                // Iterations
                 1,
-                // Key length
                 20,
             ],
             [
@@ -100,18 +76,6 @@ class Pbkdf2Test extends Horde_Test_Case
                 4096,
                 20,
             ],
-            /* Disable - 16 million iterations takes about 30 seconds on
-             * my dev machine so don't want to cause that kind of CPU load
-             * when doing automated testing.
-            array(
-                'eefe3d61cd4da4e4e9945b3d6ba2158c2634e984',
-                'SHA1',
-                'password',
-                'salt',
-                16777216,
-                20
-            ),
-            */
             [
                 '3d2eec4fe41c849b80c8d83662c0e44a8b291a964cf2f07038',
                 'SHA1',
@@ -148,7 +112,7 @@ class Pbkdf2Test extends Horde_Test_Case
         ];
     }
 
-    public function testAutoSaltGeneration()
+    public function testAutoSaltGeneration(): void
     {
         $pbkdf2 = new Horde_Crypt_Blowfish_Pbkdf2('password', 20);
 
@@ -157,5 +121,4 @@ class Pbkdf2Test extends Horde_Test_Case
             strlen($pbkdf2->salt)
         );
     }
-
 }
