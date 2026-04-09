@@ -35,3 +35,7 @@ dependencies:
     ext:
       mcrypt: '*'
       openssl: '*'
+keywords:
+  - encryption
+  - blowfish
+vendor: horde
