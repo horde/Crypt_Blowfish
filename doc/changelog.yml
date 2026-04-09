@@ -1,4 +1,20 @@
 ---
+2.0.0-beta1:
+  api: 2.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-09
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    chore: Add PSR-4 autoloading to metadata
+    test: cover the src/ variant with unit tests
+    feat: PSR-4 / PER-1 modern port of Horde\Crypt\Blowfish
+    test: Modernize unit test suite
+    chore: Update metadata
+    style: php-cs-fixer
 2.0.0-alpha4:
   api: 2.0.0-alpha1
   state:
