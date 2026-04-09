@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
- * Copyright 2008 Philippe Jausions <jausions@php.net>
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2005-2026 Matthew Fonda <mfonda@php.net>
+ * Copyright 2008-2026 Philippe Jausions <jausions@php.net>
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -59,8 +59,8 @@ class Horde_Crypt_Blowfish_Php extends Horde_Crypt_Blowfish_Base
      */
     protected function _init()
     {
-        if (!isset($this->_ob) ||
-            ($this->_ob->md5 != hash('md5', $this->key))) {
+        if (!isset($this->_ob)
+            || ($this->_ob->md5 != hash('md5', $this->key))) {
             switch ($this->cipher) {
                 case 'cbc':
                     $this->_ob = new Horde_Crypt_Blowfish_Php_Cbc($this->key);

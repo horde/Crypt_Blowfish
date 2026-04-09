@@ -1,19 +1,23 @@
 <?php
-/**
- * @category   Horde
- * @package    Crypt_Blowfish
- * @subpackage UnitTests
- */
-namespace Horde\Crypt\Blowfish\Test;
-use Horde_Test_Case;
-use \Horde_Crypt_Blowfish;
-use \Horde_Crypt_Blowfish_Mcrypt;
-use \Horde_Crypt_Blowfish_Openssl;
 
 /**
  * @category   Horde
  * @package    Crypt_Blowfish
  * @subpackage UnitTests
+ */
+
+namespace Horde\Crypt\Blowfish\Test;
+
+use Horde_Test_Case;
+use Horde_Crypt_Blowfish;
+use Horde_Crypt_Blowfish_Mcrypt;
+use Horde_Crypt_Blowfish_Openssl;
+
+/**
+ * @category   Horde
+ * @package    Crypt_Blowfish
+ * @subpackage UnitTests
+ * @coversNothing
  */
 class EcbTest extends Horde_Test_Case
 {
@@ -74,8 +78,8 @@ class EcbTest extends Horde_Test_Case
     {
         $ob = $this->setupTest(
             $vector,
-            Horde_Crypt_Blowfish::IGNORE_OPENSSL |
-            Horde_Crypt_Blowfish::IGNORE_MCRYPT
+            Horde_Crypt_Blowfish::IGNORE_OPENSSL
+            | Horde_Crypt_Blowfish::IGNORE_MCRYPT
         );
         $encrypt = $ob->encrypt($vector['plain']);
 
@@ -95,16 +99,16 @@ class EcbTest extends Horde_Test_Case
     public function vectorProvider()
     {
         $data = file(dirname(__FILE__) . '/fixtures/vectors.txt');
-        $vectors = array();
+        $vectors = [];
 
         foreach ($data as $val) {
-            list($key, $plain) = explode(' ', trim($val));
-            $vectors[] = array(
-                array(
+            [$key, $plain] = explode(' ', trim($val));
+            $vectors[] = [
+                [
                     'key' => pack("H*", $key),
-                    'plain' => pack("H*", $plain)
-                )
-            );
+                    'plain' => pack("H*", $plain),
+                ],
+            ];
         }
 
         return $vectors;
@@ -112,9 +116,9 @@ class EcbTest extends Horde_Test_Case
 
     protected function setupTest($v, $ignore)
     {
-        return new Horde_Crypt_Blowfish($v['key'], array(
+        return new Horde_Crypt_Blowfish($v['key'], [
             'cipher' => 'ecb',
-            'ignore' => $ignore
-        ));
+            'ignore' => $ignore,
+        ]);
     }
 }

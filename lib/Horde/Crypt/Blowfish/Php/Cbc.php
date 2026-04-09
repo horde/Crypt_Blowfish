@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
- * Copyright 2008 Philippe Jausions <jausions@php.net>
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2005-2026 Matthew Fonda <mfonda@php.net>
+ * Copyright 2008-2026 Philippe Jausions <jausions@php.net>
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -38,12 +38,12 @@ class Horde_Crypt_Blowfish_Php_Cbc extends Horde_Crypt_Blowfish_Php_Base
         $cipherText = '';
         $len = strlen($text);
 
-        list(, $Xl, $Xr) = unpack('N2', substr($text, 0, 8) ^ $iv);
+        [, $Xl, $Xr] = unpack('N2', substr($text, 0, 8) ^ $iv);
         $this->_encipher($Xl, $Xr);
         $cipherText .= pack('N2', $Xl, $Xr);
 
         for ($i = 8; $i < $len; $i += 8) {
-            list(, $Xl, $Xr) = unpack('N2', substr($text, $i, 8) ^ substr($cipherText, $i - 8, 8));
+            [, $Xl, $Xr] = unpack('N2', substr($text, $i, 8) ^ substr($cipherText, $i - 8, 8));
             $this->_encipher($Xl, $Xr);
             $cipherText .= pack('N2', $Xl, $Xr);
         }
@@ -58,12 +58,12 @@ class Horde_Crypt_Blowfish_Php_Cbc extends Horde_Crypt_Blowfish_Php_Base
         $plainText = '';
         $len = strlen($text);
 
-        list(, $Xl, $Xr) = unpack('N2', substr($text, 0, 8));
+        [, $Xl, $Xr] = unpack('N2', substr($text, 0, 8));
         $this->_decipher($Xl, $Xr);
         $plainText .= (pack('N2', $Xl, $Xr) ^ $iv);
 
         for ($i = 8; $i < $len; $i += 8) {
-            list(, $Xl, $Xr) = unpack('N2', substr($text, $i, 8));
+            [, $Xl, $Xr] = unpack('N2', substr($text, $i, 8));
             $this->_decipher($Xl, $Xr);
             $plainText .= (pack('N2', $Xl, $Xr) ^ substr($text, $i - 8, 8));
         }

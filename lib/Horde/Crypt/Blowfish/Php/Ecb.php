@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
- * Copyright 2008 Philippe Jausions <jausions@php.net>
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2005-2026 Matthew Fonda <mfonda@php.net>
+ * Copyright 2008-2026 Philippe Jausions <jausions@php.net>
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -39,7 +39,7 @@ class Horde_Crypt_Blowfish_Php_Ecb extends Horde_Crypt_Blowfish_Php_Base
         $len = strlen($text);
 
         for ($i = 0; $i < $len; $i += 8) {
-            list(, $Xl, $Xr) = unpack('N2', substr($text, $i, 8));
+            [, $Xl, $Xr] = unpack('N2', substr($text, $i, 8));
             $this->_encipher($Xl, $Xr);
             $cipherText .= pack('N2', $Xl, $Xr);
         }
@@ -55,7 +55,7 @@ class Horde_Crypt_Blowfish_Php_Ecb extends Horde_Crypt_Blowfish_Php_Base
         $len = strlen($text);
 
         for ($i = 0; $i < $len; $i += 8) {
-            list(, $Xl, $Xr) = unpack('N2', substr($text, $i, 8));
+            [, $Xl, $Xr] = unpack('N2', substr($text, $i, 8));
             $this->_decipher($Xl, $Xr);
             $plainText .= pack('N2', $Xl, $Xr);
         }

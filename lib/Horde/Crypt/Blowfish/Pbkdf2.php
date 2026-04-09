@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2015-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -64,25 +64,22 @@ class Horde_Crypt_Blowfish_Pbkdf2
      *   - i_count: (integer) Iteration count.
      *   - salt: (string) The salt to use.
      */
-    public function __construct($pass, $key_length, array $opts = array())
+    public function __construct($pass, $key_length, array $opts = [])
     {
-        $this->iterations = isset($opts['i_count'])
-            ? $opts['i_count']
-            : 16384;
+        $this->iterations = $opts['i_count']
+            ?? 16384;
 
         if (($key_length <= 0) || ($this->iterations <= 0)) {
             throw new InvalidArgumentException('Invalid arguments');
         }
 
-        $this->hashAlgo = isset($opts['algo'])
-            ? $opts['algo']
-            : 'SHA256';
+        $this->hashAlgo = $opts['algo']
+            ?? 'SHA256';
 
         /* Nice to have, but salt does not need to be cryptographically
          * secure random value. */
-        $this->salt = isset($opts['salt'])
-            ? $opts['salt']
-            : (function_exists('openssl_random_pseudo_bytes')
+        $this->salt = $opts['salt']
+            ?? (function_exists('openssl_random_pseudo_bytes')
                   ? openssl_random_pseudo_bytes($key_length)
                   : substr(hash('sha512', new Horde_Support_Randomid(), true), 0, $key_length));
 
