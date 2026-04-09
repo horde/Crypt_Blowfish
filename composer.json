@@ -22,12 +22,14 @@
         "horde/test": "^3 || dev-FRAMEWORK_6_0"
     },
     "suggest": {
-        "ext-mcrypt": "*",
         "ext-openssl": "*"
     },
     "autoload": {
         "psr-0": {
             "Horde_Crypt_Blowfish": "lib/"
+        },
+        "psr-4": {
+            "Horde\\Crypt\\Blowfish\\": "src/"
         }
     },
     "autoload-dev": {
