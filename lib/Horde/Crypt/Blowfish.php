@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright 2005-2008 Matthew Fonda <mfonda@php.net>
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2005-2026 Matthew Fonda <mfonda@php.net>
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -68,19 +68,19 @@ class Horde_Crypt_Blowfish
      *   - ignore: (integer) A mask of drivers to ignore (IGNORE_* constants).
      *   - iv: (string) IV to use.
      */
-    public function __construct($key, array $opts = array())
+    public function __construct($key, array $opts = [])
     {
-        $opts = array_merge(array(
+        $opts = array_merge([
             'cipher' => 'ecb',
             'ignore' => 0,
-            'iv' => null
-        ), $opts);
+            'iv' => null,
+        ], $opts);
 
-        if (!($opts['ignore'] & self::IGNORE_OPENSSL) &&
-            Horde_Crypt_Blowfish_Openssl::supported()) {
+        if (!($opts['ignore'] & self::IGNORE_OPENSSL)
+            && Horde_Crypt_Blowfish_Openssl::supported()) {
             $this->_crypt = new Horde_Crypt_Blowfish_Openssl($opts['cipher']);
-        } elseif (!($opts['ignore'] & self::IGNORE_MCRYPT) &&
-                  Horde_Crypt_Blowfish_Mcrypt::supported()) {
+        } elseif (!($opts['ignore'] & self::IGNORE_MCRYPT)
+                  && Horde_Crypt_Blowfish_Mcrypt::supported()) {
             $this->_crypt = new Horde_Crypt_Blowfish_Mcrypt($opts['cipher']);
         } else {
             $this->_crypt = new Horde_Crypt_Blowfish_Php($opts['cipher']);
