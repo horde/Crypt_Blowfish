@@ -13,23 +13,26 @@
     ],
     "keywords": [
         "encryption",
-        "blowfish"
+        "blowfishb"
     ],
-    "time": "2026-04-09",
+    "time": "2026-04-10",
     "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
-        "horde/exception": "^3 || dev-FRAMEWORK_6_0",
-        "horde/support": "^3 || dev-FRAMEWORK_6_0"
+        "horde/exception": "^3",
+        "horde/support": "^3"
     },
     "require-dev": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0"
+        "horde/test": "^3"
     },
     "suggest": {
         "ext-mcrypt": "*",
         "ext-openssl": "*"
     },
     "autoload": {
+        "psr-0": {
+            "Horde_Crypt_Blowfish": "lib/"
+        },
         "psr-4": {
             "Horde\\Crypt\\Blowfish\\": "src/"
         }

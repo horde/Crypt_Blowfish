@@ -38,7 +38,4 @@ dependencies:
 keywords:
   - encryption
   - blowfish
-autoload:
-  psr-4:
-    Horde\Crypt\Blowfish\: src/
 vendor: horde
