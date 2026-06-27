@@ -7,6 +7,7 @@ namespace Horde\Crypt\Blowfish\Test;
 use Horde\Crypt\Blowfish\CipherMode;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use ValueError;
 
 #[CoversClass(CipherMode::class)]
 class CipherModeTest extends TestCase
@@ -33,7 +34,7 @@ class CipherModeTest extends TestCase
 
     public function testFromInvalid(): void
     {
-        $this->expectException(\ValueError::class);
+        $this->expectException(ValueError::class);
         CipherMode::from('cfb');
     }
 }

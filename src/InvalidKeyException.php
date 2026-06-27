@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Horde\Crypt\Blowfish;
 
+use InvalidArgumentException;
+
 /**
  * Exception for invalid encryption keys.
  *
@@ -22,6 +24,4 @@ namespace Horde\Crypt\Blowfish;
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package  Crypt_Blowfish
  */
-class InvalidKeyException extends \InvalidArgumentException
-{
-}
+class InvalidKeyException extends InvalidArgumentException {}
